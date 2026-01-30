@@ -4,7 +4,7 @@ import img1 from "../../assets/images/Prime Meat Hub - Lovable (1).jpg";
 import img2 from "../../assets/images/Prime Meat Hub - Lovable (2).jpg";
 import img3 from "../../assets/images/Prime Meat Hub - Lovable (3).jpg";
 import img4 from "../../assets/images/Prime Meat Hub - Lovable (4).jpg";
-
+import { useNavigate } from "react-router-dom";
 const categories = ["All", "Chicken", "Mutton", "Fish", "Seafood"];
 
 const productsData = [
@@ -92,7 +92,7 @@ const productsData = [
 
 const CardCarousel = () => {
   const [active, setActive] = useState("All");
-
+  const navigate = useNavigate();
   const filtered =
     active === "All"
       ? productsData
@@ -145,7 +145,12 @@ const CardCarousel = () => {
                 {item.stock}
               </span>
 
-              <img src={item.image} alt={item.title} />
+              <img
+                src={item.image}
+                alt={item.title}
+                onClick={() => navigate("/products")}
+                style={{ cursor: "pointer " }}
+              />
             </div>
 
             <div className="card-body">

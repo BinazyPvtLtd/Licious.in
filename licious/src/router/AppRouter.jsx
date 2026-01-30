@@ -3,17 +3,21 @@ import Homepage from "../pages/Homepage";
 import AppLayout from "../layouts/AppLayout";
 import Product from "../pages/Product";
 import Contact from "../pages/Contact";
-import Categories from "../pages/Categories";
+import Categories from "../pages/Cart";
+import Cart from "../pages/Cart";
+import Checkout from "../pages/Checkout";
+import ScrollToTop from "../HelperFunction/ScrollToTOp";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
-        <Route element={<AppLayout/>}>
+        <Route element={<AppLayout />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/products" element={<Product/>} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </BrowserRouter>
