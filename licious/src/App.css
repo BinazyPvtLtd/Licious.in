@@ -1134,3 +1134,109 @@ h2 {
   }
 }
 /* cart page css ends here */
+
+/* Sign UP css starts here */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Poppins', sans-serif; }
+
+.auth-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+.auth-image {
+  flex: 1;
+  background: url('https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+}
+
+.auth-form {
+  flex: 1;
+  padding: 40px 60px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  margin-bottom: 40px;
+  color: #f06a7f;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #f06a7f;
+}
+
+.sub-text {
+  margin-bottom: 25px;
+  color: #999;
+}
+
+.sub-text span { color: #f06a7f; font-weight: 600; cursor: pointer; }
+
+form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #f2b6c0;
+  background: #fdecef;
+  outline: none;
+  font-size: 15px;
+}
+
+form button {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #f06a7f;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.or {
+  margin: 25px 0 15px;
+  text-align: center;
+  color: #aaa;
+  position: relative;
+}
+
+.or:before,
+.or:after {
+  content: '';
+  height: 1px;
+  width: 40%;
+  background: #ddd;
+  position: absolute;
+  top: 50%;
+}
+
+.or:before { left: 0; }
+.or:after { right: 0; }
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons img {
+  width: 34px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .auth-wrapper { flex-direction: column; }
+  .auth-image { height: 250px; }
+  .auth-form { padding: 30px 20px; }
+}
+/* Sign UP css ends here */
