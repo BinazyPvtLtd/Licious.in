@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import "./header.css";
 
 const MainHeader = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    window.location.href = "/signup";
+  };
 
   return (
     <>
@@ -60,7 +65,13 @@ const MainHeader = () => {
           <a>Categories</a>
           <a>Products</a>
           <a>Contact</a>
-          <button className="mobile-order-btn">Order Now</button>
+          <button
+            type="button"
+            className="mobile-order-btn"
+            onClick={handleClick}
+          >
+            Order Now
+          </button>{" "}
         </nav>
       </div>
     </>

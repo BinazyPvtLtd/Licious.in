@@ -14,14 +14,14 @@ const AppRouter = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
-
         <Route element={<AppLayout />}>
           <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
         </Route>
+
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );

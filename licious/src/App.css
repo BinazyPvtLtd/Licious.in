@@ -1239,4 +1239,9 @@ form button {
   .auth-image { height: 250px; }
   .auth-form { padding: 30px 20px; }
 }
+
+.setImage{
+  height: auto;
+  width: 100%;
+}
 /* Sign UP css ends here */

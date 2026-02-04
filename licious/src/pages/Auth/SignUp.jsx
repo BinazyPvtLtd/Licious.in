@@ -1,6 +1,5 @@
 import { useState } from "react";
-// import "./signup.css";
-
+import img from "../../assets/images/main-img.jpg";
 const SignUp = () => {
   const [form, setForm] = useState({
     name: "",
@@ -21,16 +20,18 @@ const SignUp = () => {
   return (
     <div className="auth-wrapper">
       {/* Left Image Section */}
-      <div className="auth-image"></div>
+      <div className="">
+        <img src={img} alt="bg-img" className="setImage"/>
+      </div>
 
       {/* Right Form Section */}
       <div className="auth-form">
-        <div className="top-nav">
+        {/* <div className="top-nav">
           <span>Home</span>
           <span>Catalogue</span>
           <span>About Us</span>
           <span>Profile</span>
-        </div>
+        </div> */}
 
         <h1>Welcome Back!</h1>
         <p className="sub-text">Already have an account? <span>Sign In</span></p>
