@@ -1,88 +1,104 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import img from "../../assets/images/main-img.jpg";
+
 const SignUp = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    age: "",
-    password: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(form);
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    alert("Signup Successful!");
   };
 
   return (
     <div className="auth-wrapper">
       {/* Left Image Section */}
-      <div className="">
-        <img src={img} alt="bg-img" className="setImage"/>
+      <div className="auth-image">
+        <img src={img} alt="bg-img" className="setImage" />
       </div>
 
       {/* Right Form Section */}
       <div className="auth-form">
-        {/* <div className="top-nav">
-          <span>Home</span>
-          <span>Catalogue</span>
-          <span>About Us</span>
-          <span>Profile</span>
-        </div> */}
+        <h1 style={{ textAlign: "center" }}>Welcome Back!</h1>
 
-        <h1>Welcome Back!</h1>
-        <p className="sub-text">Already have an account? <span>Sign In</span></p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="input-group">
+            <input
+              style={{ marginBottom: "0px" }}
+              className=""
+              type="text"
+              placeholder="Full Name"
+              {...register("name", {
+                required: "Name is required",
+                minLength: {
+                  value: 3,
+                  message: "Minimum 3 characters",
+                },
+              })}
+            />
+            {errors.name && <small>{errors.name.message}</small>}
+          </div>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
+          <div className="input-group">
+            <input
+              style={{ marginBottom: "0px" }}
+              type="email"
+              placeholder="Email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+            {errors.email && <small>{errors.email.message}</small>}
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
+          <div className="input-group">
+            <input
+              style={{ marginBottom: "0px" }}
+              type="number"
+              placeholder="Age"
+              {...register("age", {
+                required: "Age is required",
+                min: {
+                  value: 10,
+                  message: "Minimum age is 10",
+                },
+                max: {
+                  value: 100,
+                  message: "Maximum age is 100",
+                },
+              })}
+            />
+            {errors.age && <small>{errors.age.message}</small>}
+          </div>
 
-          <input
-            type="number"
-            name="age"
-            placeholder="Age"
-            value={form.age}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="input-group">
+            <input
+              style={{ marginBottom: "0px" }}
+              type="password"
+              placeholder="Password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Minimum 6 characters required",
+                },
+              })}
+            />
+            {errors.password && <small>{errors.password.message}</small>}
+          </div>
 
           <button type="submit">Sign Up</button>
         </form>
-
-        <div className="or">OR</div>
-
-        <div className="social-icons">
-          <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" />
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
-          <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png" />
-        </div>
+        <p className="sub-text" style={{ textAlign: "center" }}>
+          Already have an account? <span>Sign In</span>
+        </p>
       </div>
     </div>
   );
