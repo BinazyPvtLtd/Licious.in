@@ -6,7 +6,7 @@ const MainHeader = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => {
-    window.location.href = "/signup";
+    navigate("/signup");
   };
 
   return (
@@ -28,7 +28,9 @@ const MainHeader = () => {
           <a>Contact</a>
         </nav>
 
-        <button className="order-btn desktop-only">Order Now</button>
+        <button className="order-btn desktop-only" onClick={handleClick}>
+          Order Now
+        </button>
 
         {/* Hamburger */}
         <div className="menu-toggle" onClick={() => setOpen(true)}>

@@ -1,31 +1,26 @@
 import { useForm } from "react-hook-form";
 import img from "../../assets/images/main-img.jpg";
-import { registerAPI } from "../../api";
+import { loginAPI } from "../../api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
-const SignUp = () => {
+const SignIn = () => {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  
   const onSubmit = (data) => {
     const payload = {
-      name: data.name,
-      age: data.age,
       email: data.email,
       password: data.password,
     };
-
-    console.log("Payload:", payload);
-
-    registerAPI(payload)
+    loginAPI(payload)
       .then((res) => {
         toast.success(res?.data?.message || "Signup Successful!");
-        navigate("/signin");
+        navigate("/");
       })
       .catch((err) => {
         toast.error(err?.response?.data?.message || "Signup Failed!");
@@ -33,22 +28,17 @@ const SignUp = () => {
   };
 
   const handleClick = () => {
-    navigate("/signin");
+    navigate("/signup");
   };
 
   return (
     <div className="auth-wrapper">
-      {/* Left Image Section */}
-      <div className="auth-image">
-        <img src={img} alt="bg-img" className="setImage" />
-      </div>
-
       {/* Right Form Section */}
       <div className="auth-form">
-        <h1 style={{ textAlign: "center" }}>Welcome Back!</h1>
+        <h1 style={{ textAlign: "center" }}>SignIn to get started!</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="input-group">
+          {/* <div className="input-group">
             <input
               style={{ marginBottom: "0px" }}
               className=""
@@ -63,7 +53,7 @@ const SignUp = () => {
               })}
             />
             {errors.name && <small>{errors.name.message}</small>}
-          </div>
+          </div> */}
 
           <div className="input-group">
             <input
@@ -81,7 +71,7 @@ const SignUp = () => {
             {errors.email && <small>{errors.email.message}</small>}
           </div>
 
-          <div className="input-group">
+          {/* <div className="input-group">
             <input
               style={{ marginBottom: "0px" }}
               type="number"
@@ -99,7 +89,7 @@ const SignUp = () => {
               })}
             />
             {errors.age && <small>{errors.age.message}</small>}
-          </div>
+          </div> */}
 
           <div className="input-group">
             <input
@@ -117,14 +107,24 @@ const SignUp = () => {
             {errors.password && <small>{errors.password.message}</small>}
           </div>
 
-          <button type="submit">Sign Up</button>
+          <button type="submit" className="mb-2">
+            Sign In
+          </button>
         </form>
         <p className="sub-text" style={{ textAlign: "center" }}>
-          Already have an account? <span onClick={handleClick}>Sign In</span>
+          New here? <span onClick={handleClick}>Sign Up</span>
         </p>
+        <p className="sub-text" style={{ textAlign: "center" }}>
+          By signing in you are agree to our terms and conditions
+        </p>
+      </div>
+
+      {/* Left Image Section */}
+      <div className="auth-image">
+        <img src={img} alt="bg-img" className="setImage" />
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;

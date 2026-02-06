@@ -61,7 +61,15 @@
 
 .top-left {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 20px;
+}
+
+.top-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .top-right {
@@ -885,19 +893,51 @@
 }
 
 /* Offcanvas */
+/* Mobile Visibility */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 99;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Offcanvas */
 .offcanvas {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 300px;
-  height: 100%;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
   background: #fff;
-  z-index: 99;
-  padding: 20px;
+  z-index: 100;
   transition: 0.35s ease;
-  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
+  padding: 16px;
 }
 
 .offcanvas.show {
@@ -910,14 +950,158 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .close-btn {
-  border: none;
-  background: transparent;
   font-size: 22px;
+  background: none;
+  border: none;
+   /* ========== MOBILE HAMBURGER + OFFCANVAS MENU ========== */
+
+  /* Desktop */
+  .desktop-only {
+    display: flex;
+  }
+
+  /* Mobile */
+  .mobile-only {
+    display: none;
+  }
+
+  /* Hamburger Icon */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 99;
+  }
+
+  .overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* Offcanvas */
+  .offcanvas {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff;
+    z-index: 100;
+    transition: right 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .offcanvas.show {
+    right: 0;
+  }
+
+  /* Header */
+  .offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+  }
+
+  .close-btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Links */
+  .offcanvas-links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-top: 25px;
+  }
+
+  .offcanvas-links a {
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* Mobile Button */
+  .mobile-order-btn {
+    margin-top: 20px;
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  /* ========== RESPONSIVE ========== */
+
+  @media (max-width: 768px) {
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: block;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+  }
+
   cursor: pointer;
+}
+
+/* Links */
+.offcanvas-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.offcanvas-links a {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Button */
+.mobile-order-btn {
+  margin-top: 20px;
+  padding: 12px;
+  background: #e63946;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
 /* Links */
@@ -1135,179 +1319,15 @@ h2 {
 }
 /* cart page css ends here */
 
-/* Sign UP css starts here */
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-}
-
-.auth-wrapper {
-  display: flex;
-  min-height: 100vh;
-  background: #f9f9f9;
-}
-
-.auth-image {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.setImage {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-}
-
-.auth-form {
-  flex: 1;
-  padding: 40px 60px;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.top-nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 25px;
-  margin-bottom: 40px;
-  color: #f06a7f;
-  font-weight: 500;
-}
-
-h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: #f06a7f;
-}
-
-.sub-text {
-  margin-bottom: 25px;
-  color: #999;
-}
-
-.sub-text span {
-  color: #f06a7f;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-form input {
-  width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  border: 1px solid #f2b6c0;
-  background: #fdecef;
-  outline: none;
-  font-size: 15px;
-}
-
-form button {
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 30px;
-  border: none;
-  background: #f06a7f;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.or {
-  margin: 25px 0 15px;
-  text-align: center;
-  color: #aaa;
-  position: relative;
-}
-
-.or:before,
-.or:after {
-  content: "";
-  height: 1px;
-  width: 40%;
-  background: #ddd;
-  position: absolute;
-  top: 50%;
-}
-
-.or:before {
-  left: 0;
-}
-.or:after {
-  right: 0;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.social-icons img {
-  width: 34px;
-  cursor: pointer;
-}
-
-.setImage {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-}
-
-@media (max-width: 900px) {
-  .auth-wrapper {
-    flex-direction: column;
-  }
-
-  .auth-image {
-    height: 250px;
-  }
-
-  .setImage {
-    height: 100%;
-  }
-
-  .auth-form {
-    padding: 30px 20px;
+/* Mobile screen css starts here */
+@media (max-width: 320px) {
+  .top-bar {
+    background: #d6334a;
+    color: #fff;
+    padding: 6px 0px;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
   }
 }
-
-.auth-form form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.input-group {
-  width: 70%;
-  margin-bottom: 15px;
-}
-
-.input-group input {
-  width: 100%;
-}
-
-.input-group small {
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-  display: block;
-  padding-left: 6px;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .input-group {
-    width: 95%;
-  }
-}
-
-/* Sign UP css ends here */

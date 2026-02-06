@@ -8,16 +8,14 @@ const Homepage = () => {
   return (
     <>
       <div className="section">
-        <div className="container">
-          <img src={img} alt="banner" className="banner-img" />
-        </div>
-        {/* Categories section */}
-        <div>
-          <Category />
-        </div>
-        <div>
-          <CardCarousel />
-        </div>
+        <img src={img} alt="banner" className="banner-img" />
+      </div>
+      {/* Categories section */}
+      <div>
+        <Category />
+      </div>
+      <div>
+        <CardCarousel />
       </div>
     </>
   );
