@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+echo settings.json >> .gitignore
+echo Backend/settings.json >> .gitignore
