@@ -1,0 +1,14 @@
+{
+  "editor.fontSize": 14,
+
+  "git-autoconfig.configList": [
+    {
+      "user.email": "eekta.srivastava2000@gmail.com",
+      "user.name": "Ekta"
+    },
+    {
+      "user.email": "binazypvtltd@gmail.com",
+      "user.name": "Admin(Ismiel sir)"
+    }
+  ]
+}
